@@ -1,0 +1,17 @@
+bot:
+  name: FinePlaceBot
+  token: 1658052423:AAFTM8X9cQF_uyqe3nyE5zeKcwgLqrJZ_1g
+spring:
+  datasource:
+    #    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tourist_guide?serverTimezone=UTC
+    username: root
+    password: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+message-to-user:
+  city-is-not-in-the-database: К сожелению, я ничего не знаю об интересных местах в этом городе.
