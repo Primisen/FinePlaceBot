@@ -59,11 +59,11 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     private boolean isCityEnteredByUserNotExist(String city) {
-        return placeRepository.getPlacesByCity(city) == null;
+        return placeRepository.findByCity(city) == null;
     }
 
     private String findPlaceDescriptionInDatabase(String city) {
-        return placeRepository.getPlacesByCity(city).getName();
+        return placeRepository.findByCity(city).getName();
     }
 
     private void sendMessageToUser(String messageToUser, Update update) throws TelegramApiException {

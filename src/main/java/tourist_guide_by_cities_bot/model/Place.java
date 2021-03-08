@@ -1,15 +1,13 @@
 package tourist_guide_by_cities_bot.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "place")
 public class Place {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "place_id")
     private int id;
 
@@ -26,6 +24,12 @@ public class Place {
 
     public Place(int id, String name, String description, String city) {
         this.id = id;
+        this.name = name;
+        this.description = description;
+        this.city = city;
+    }
+
+    public Place(String name, String description, String city){
         this.name = name;
         this.description = description;
         this.city = city;
