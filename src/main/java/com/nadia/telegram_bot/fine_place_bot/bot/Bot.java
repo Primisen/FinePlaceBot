@@ -1,4 +1,4 @@
-package com.nadia.telegram_bot.fine_place_bot;
+package com.nadia.telegram_bot.fine_place_bot.bot;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
