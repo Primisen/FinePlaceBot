@@ -1,13 +1,13 @@
- ## Application "FinePlaceBot"
+ # Application "FinePlaceBot"
 
-###***Description***:  
+###Description:  
 Application controls "FinePlaceBot" telegram bot: user enter some city, 
 and chat-bot returns tourist places in this city.
 Also, this application works as a REST-ful WebService to provide access to the database.
 
-###***Run***: 
+###Run: 
 1. Download this repository
-2. Run the command `sudo mysql < db_dump.sql` to create database
+2. Run the command `sudo mysql < tourist_guide.sql` to create database
 3. Build application: `mvn package spring-boot:repackage` 
 3. Run application: `java -jar target/tourist-guide-by-cities-bot-1.0-SNAPSHOT.jar`  
 
@@ -15,7 +15,7 @@ Also, this application works as a REST-ful WebService to provide access to the d
    *Telegram bot name:* FinePlaceBot  
    *Telegram bot token:* 1658052423:AAFTM8X9cQF_uyqe3nyE5zeKcwgLqrJZ_1g
 
-###***Use***:
+###Use:
 
 *Telegram bot*:
 1. Find telegram bot "FinePlaceBot"
