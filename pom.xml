@@ -20,26 +20,12 @@
 
     <dependencies>
 
-        <!-- Telegram API -->
-
-        <!--        <dependency>-->
-        <!--            <groupId>org.telegram</groupId>-->
-        <!--            <artifactId>telegrambots</artifactId>-->
-        <!--            <version>${telegram.version}</version>-->
-        <!--        </dependency>-->
-
         <!--        Библиотека TelegramBots-Spring-Boot-Starter включает в себя Spring Boot и Telegram API-->
         <dependency>
             <groupId>com.github.xabgesagtx</groupId>
             <artifactId>telegram-spring-boot-starter</artifactId>
             <version>0.22</version>
         </dependency>
-
-        <!--        <dependency>-->
-        <!--            <groupId>log4j</groupId>-->
-        <!--            <artifactId>log4j</artifactId>-->
-        <!--            <version>1.2.17</version>-->
-        <!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -59,11 +45,16 @@
             <version>${spring-boot.version}</version>
         </dependency>
 
-
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.19</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
         </dependency>
 
     </dependencies>
@@ -78,6 +69,16 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <configuration>
+                    <mainClass>com.nadia.telegram_bot.fine_place_bot.TouristGuideByCitiesBotApplication</mainClass>
+                </configuration>
+
             </plugin>
         </plugins>
     </build>
