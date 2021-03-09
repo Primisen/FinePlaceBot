@@ -10,8 +10,6 @@ import java.util.List;
 @Repository
 public interface PlaceRepository extends CrudRepository<Place, Integer> {
 
-    List<Place> getByCity(String city);
-
     @Query(value = "select place_name from place where place.city = ?1", nativeQuery = true)
     List<String> getPlacesNamesByCity(String city);
 }
