@@ -14,7 +14,7 @@ public class Place {
     @Column(name = "place_name")
     private String name;
 
-    @Column(name= "city")//необходимо ли это здесь?
+    @Column(name= "city")
     private String city;
 
     public Place(){}
