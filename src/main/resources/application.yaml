@@ -14,3 +14,5 @@ spring:
 
 message-to-user:
   city-is-not-in-the-database: К сожелению, я ничего не знаю об интересных местах в этом городе.
+
+server-message: Successfully!
