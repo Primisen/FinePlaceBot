@@ -1,5 +1,5 @@
  # Application "FinePlaceBot"
- ### Description:
+ ### ***Description:***
 Application controls "FinePlaceBot" telegram bot: user enter some city, 
 and chat-bot returns tourist places in this city.
 Also, this application works as a REST-ful WebService to provide access to the database.
@@ -14,7 +14,7 @@ Also, this application works as a REST-ful WebService to provide access to the d
    *Telegram bot name:* FinePlaceBot  
    *Telegram bot token:* 1658052423:AAFTM8X9cQF_uyqe3nyE5zeKcwgLqrJZ_1g
 
- ### Use:
+ ### ***Use:***
 
 *Telegram bot*:
 1. Find telegram bot "FinePlaceBot"
