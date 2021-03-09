@@ -11,7 +11,6 @@ import com.nadia.telegram_bot.fine_place_bot.repository.PlaceRepository;
 
 import java.util.List;
 
-
 @Component
 public class Bot extends TelegramLongPollingBot {
 
@@ -23,7 +22,7 @@ public class Bot extends TelegramLongPollingBot {
     private String botToken;
 
     @Value("${message-to-user.city-is-not-in-the-database}")
-    private String messageThatCityNotExist;
+    private String messageThatCityNotExistInDatabase;
 
     @Autowired
     public PlaceRepository placeRepository;
@@ -34,13 +33,14 @@ public class Bot extends TelegramLongPollingBot {
         String city = update.getMessage().getText();
         String messageToUser = null;
 
+
         try {
 
             if (isCityEnteredByUserNotExist(city)) {
-                messageToUser = messageThatCityNotExist;
+                messageToUser = messageThatCityNotExistInDatabase;
 
             } else {
-                messageToUser = String.valueOf(findPlaceInDatabase(city));
+                messageToUser = createFormattedMessage(city);
             }
 
             sendMessageToUser(messageToUser, update);
@@ -61,11 +61,10 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     private boolean isCityEnteredByUserNotExist(String city) {
-        return placeRepository.getByCity(city) == null;
+        return placeRepository.getPlacesNamesByCity(city).isEmpty();
     }
 
-    private List<String> findPlaceInDatabase(String city) {
-
+    private List<String> findPlaceNameInDatabase(String city) {
         return placeRepository.getPlacesNamesByCity(city);
     }
 
@@ -73,6 +72,24 @@ public class Bot extends TelegramLongPollingBot {
 
         execute(new SendMessage().setChatId(update.getMessage().getChatId())
                 .setText(messageToUser));
+    }
+
+    private String createFormattedMessage(String city) {
+
+        StringBuilder formattedMessage = new StringBuilder();
+        formattedMessage
+                .append(city)
+                .append("\n");
+        for (String placeName : findPlaceNameInDatabase(city)) {
+
+            formattedMessage
+                    .append("+")
+                    .append(" ")
+                    .append(placeName)
+                    .append("\n");
+        }
+
+        return formattedMessage.toString();
     }
 
 }
