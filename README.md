@@ -4,7 +4,7 @@ Application controls "FinePlaceBot" telegram bot: user enter some city,
 and chat-bot returns tourist places in this city.
 Also, this application works as a REST-ful WebService to provide access to the database.
 
- ### Run:
+ ### ***Run:***
 1. Download this repository
 2. Run the command `sudo mysql < tourist_guide.sql` to create database
 3. Build application: `mvn package spring-boot:repackage` 
