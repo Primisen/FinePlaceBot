@@ -1,4 +1,4 @@
-package tourist_guide_by_cities_bot;
+package com.nadia.telegram_bot.fine_place_bot;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,7 +7,9 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import tourist_guide_by_cities_bot.repository.PlaceRepository;
+import com.nadia.telegram_bot.fine_place_bot.repository.PlaceRepository;
+
+import java.util.List;
 
 
 @Component
@@ -38,7 +40,7 @@ public class Bot extends TelegramLongPollingBot {
                 messageToUser = messageThatCityNotExist;
 
             } else {
-                messageToUser = findPlaceDescriptionInDatabase(city);
+                messageToUser = String.valueOf(findPlaceInDatabase(city));
             }
 
             sendMessageToUser(messageToUser, update);
@@ -59,11 +61,12 @@ public class Bot extends TelegramLongPollingBot {
     }
 
     private boolean isCityEnteredByUserNotExist(String city) {
-        return placeRepository.findByCity(city) == null;
+        return placeRepository.getByCity(city) == null;
     }
 
-    private String findPlaceDescriptionInDatabase(String city) {
-        return placeRepository.findByCity(city).getName();
+    private List<String> findPlaceInDatabase(String city) {
+
+        return placeRepository.getPlacesNamesByCity(city);
     }
 
     private void sendMessageToUser(String messageToUser, Update update) throws TelegramApiException {

@@ -1,9 +1,9 @@
-package tourist_guide_by_cities_bot.controller;
+package com.nadia.telegram_bot.fine_place_bot.controller;
 
+import com.nadia.telegram_bot.fine_place_bot.model.Place;
+import com.nadia.telegram_bot.fine_place_bot.repository.PlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tourist_guide_by_cities_bot.model.Place;
-import tourist_guide_by_cities_bot.repository.PlaceRepository;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
@@ -25,21 +25,20 @@ public class CrudController {
         return placeRepository.findById(id).get();
     }
 
-    @RequestMapping(value = "/place/", method = PUT)
-    public void addPlace(@RequestParam(value = "placeName") String placeName,
-                         @RequestParam(value = "placeDescription") String placeDescription,
-                         @RequestParam(value = "placeCity") String placeCity) {
+    @RequestMapping(value = "/place", method = POST)
+    public void addPlace(@RequestParam(value = "name") String name,
+                         @RequestParam(value = "city") String city) {
 
-        placeRepository.save(new Place(placeName, placeDescription, placeCity));
+        placeRepository.save(new Place(name, city));
     }
 
-    @RequestMapping(value = "/place/{id}", method = POST)
+    @RequestMapping(value = "/place/{id}", method = PUT)
     @ResponseBody
     public void changePlace(@PathVariable("id") int id,
-                            @RequestParam (value = "description") String description){
+                            @RequestParam (value = "name") String name){
 
         Place place = placeRepository.findById(id).get();//?
-        place.setDescription(description);
+        place.setName(name);
         placeRepository.save(place);
     }
 

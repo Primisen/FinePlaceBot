@@ -1,4 +1,4 @@
-package tourist_guide_by_cities_bot.model;
+package com.nadia.telegram_bot.fine_place_bot.model;
 
 import javax.persistence.*;
 
@@ -14,24 +14,19 @@ public class Place {
     @Column(name = "place_name")
     private String name;
 
-    @Column(name = "place_description")
-    private String description;
-
     @Column(name= "city")//необходимо ли это здесь?
     private String city;
 
     public Place(){}
 
-    public Place(int id, String name, String description, String city) {
+    public Place(int id, String name, String city) {
         this.id = id;
         this.name = name;
-        this.description = description;
         this.city = city;
     }
 
-    public Place(String name, String description, String city){
+    public Place(String name, String city){
         this.name = name;
-        this.description = description;
         this.city = city;
     }
 
@@ -49,14 +44,6 @@ public class Place {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getCity() {

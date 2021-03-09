@@ -1,4 +1,4 @@
-package tourist_guide_by_cities_bot;
+package com.nadia.telegram_bot.fine_place_bot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
