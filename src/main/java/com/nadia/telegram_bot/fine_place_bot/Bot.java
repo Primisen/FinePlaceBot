@@ -1,5 +1,6 @@
 package com.nadia.telegram_bot.fine_place_bot;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,8 @@ import java.util.List;
 
 @Component
 public class Bot extends TelegramLongPollingBot {
+
+    private Logger logger = Logger.getRootLogger();
 
     // Аннотация @Value позволяет задавать значение полю путем считывания из application.yaml
     @Value("${bot.name}")
@@ -46,7 +49,7 @@ public class Bot extends TelegramLongPollingBot {
             sendMessageToUser(messageToUser, update);
 
         } catch (TelegramApiException e) {
-            e.printStackTrace();//логировать
+            logger.error(e.getMessage());
         }
     }
 
