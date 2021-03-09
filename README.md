@@ -22,7 +22,7 @@ Also, this application works as a REST-ful WebService to provide access to the d
 
 *RESTful Web Service*:
 
-| Description     | Command                                      |Example                                                  |
+| Description     | HTTP Method and Path                                      |Example                                                  |
 | --------------- |:---------------------------------------------| --------------------------------------------------------|
 | Get all places  | `GET /place/`                                |                                                         |
 | Get place by ID | `GET /place/{id}/`                           | `/place/23/`                                            |
